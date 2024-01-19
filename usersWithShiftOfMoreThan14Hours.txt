@@ -1,11 +1,4 @@
 {
-  "Position ID": "WFS000523",
-  "Position Status": "Active",
-  "Time": 45186.16667824074,
-  "Time Out": 45186.812627314815,
-  "Timecard Hours (as Time)": "16:30",
-  "Pay Cycle Start Date": 45179,
-  "Pay Cycle End Date": 45192,
-  "Employee Name": "DeXgadiXXE REdarMe, ChrisMiaW S",
-  "File Number": "000523"
+  "name": "DeXgadiXXE REdarMe, ChrisMiaW S",
+  "position": "Active"
 }

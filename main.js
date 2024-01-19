@@ -13,10 +13,6 @@ const workbook = xlsx.readFile(excelFilePath);
 const sheetName = workbook.SheetNames[0];
 const sheet = workbook.Sheets[sheetName];
 
-const headers = Object.keys(sheet);
-
-const headerKeys = headers.map((header) => header.replace(/[0-9]/g, ""));
-
 //Converting the sheet to JSON object.
 const jsonData = xlsx.utils.sheet_to_json(sheet, { header: 2 });
 
@@ -35,7 +31,19 @@ const usersWithMoreThanFourteenHoursShift = jsonData.filter((user) =>
   usersWithShiftMoreThanHours(user, 14)
 );
 
-console.log(usersWithMoreThanFourteenHoursShift.length);
+nameAndPoistion = usersWithMoreThanFourteenHoursShift.map((user) => ({
+  name: user["Employee Name"],
+  position: user["Position Status"],
+}));
+
+console.log(nameAndPoistion);
+
+const logString = nameAndPoistion
+  .map((obj) => JSON.stringify(obj, null, 2))
+  .join("\n\n");
+fs.writeFileSync(logFilePath, logString);
+
+console.log(`Log saved to ${logFilePath}`);
 
 //Function to check if the user has consecutive days of work.
 function hasConsecutiveDays(user, consecutiveDays) {
